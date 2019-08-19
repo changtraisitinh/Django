@@ -19,6 +19,8 @@ class Employees(models.Model):
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     hire_date = models.DateField()
 
+    # departments = models.ManyToManyField(Departments, related_name='departments', through='DeptEmp')
+
     def __str__(self):
         return "first_name=%s,last_name=%s" % (self.first_name, self.last_name)
 
