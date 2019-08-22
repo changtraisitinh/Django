@@ -1,7 +1,14 @@
 from django.contrib import admin
 from .models import (Employees, Departments, DeptEmp, DeptManager, Salaries, Titles)
 from .forms import EmployeeForm
+from django.contrib.admindocs import AdminSite 
+from django.utils.translation import ugenttext_lazy
+class MyEmsAdminSite(AdminSite):
+    site_title = ugenttext_lazy('test Django site admin')
+    site_header = ugenttext_lazy('test Django administration')
+    index_title = ugenttext_lazy('test Site administration')
 
+my_ems_admin_site = MyEmsAdminSite
 
 class GenderFilter(admin.SimpleListFilter):
     title = 'Gender'
@@ -27,9 +34,16 @@ class EmployeeAdmin(admin.ModelAdmin):
     ordering = ('-hire_date',)
 
 
-admin.site.register(Employees, EmployeeAdmin)
-admin.site.register(Departments)
-admin.site.register(DeptEmp)
-admin.site.register(DeptManager)
-admin.site.register(Salaries)
-admin.site.register(Titles)
+# admin.site.register(Employees, EmployeeAdmin)
+# admin.site.register(Departments)
+# admin.site.register(DeptEmp)
+# admin.site.register(DeptManager)
+# admin.site.register(Salaries)
+# admin.site.register(Titles)
+
+my_ems_admin_site.site.register(Employees, EmployeeAdmin)
+my_ems_admin_site.site.register(Departments)
+my_ems_admin_site.site.register(DeptEmp)
+my_ems_admin_site.site.register(DeptManager)
+my_ems_admin_site.site.register(Salaries)
+my_ems_admin_site.site.register(Titles)

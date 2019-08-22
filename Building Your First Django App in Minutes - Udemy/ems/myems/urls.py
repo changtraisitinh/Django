@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+# from .admin import my_ems_admin_site
+
+# from . import views 
+
+# admin.site.site_header = "Test 1"
+# admin.site.site_title = "Test 2"
+# admin.site.index_title = "Test 300"
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls), 
+
+    # path('employees/', admin.site.urls),
+    # url(r'^admin/', admin.site.urls),
+    url(r'^employees/(?P<pk>[0-9]{8})/profile/$', views.my_profile, name='my_profile'),
 ]
