@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- 2 { for mapping from view -->
+{{ api }} <br/><br/>
+
+{% if api %}
+
+    {% if api == 'Error...' %}
+        There are error, please try again
+    {% else %}
+        
+        
+
+        <div class="jumbotron">
+            <h1 class="display-4">Air quality: {{ api.0.AQI }} <br/></h1>
+            <p class="lead">Area: {{ api.0.ReportingArea }} <br/></p>
+         </div>
+    {% endif %}
+
+
+
+{% endif %}
+
+{% endblock %}
